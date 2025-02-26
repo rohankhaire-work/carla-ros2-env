@@ -1,0 +1,5 @@
+transforms3d
+pygame
+pexpect
+simple-pid==1.0.1
+setuptools==69.0

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="car" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:property name="car" value="${vehicle_model}"></xacro:property>
+  <!-- vehicle body -->
+  <link name="hero">
+    <visual>
+      <origin rpy="0 0 1.571" xyz="0 0 0"></origin>
+      <geometry>
+        <mesh filename="package://vehicle_sim/mesh/teslaM3.dae" scale="0.47 0.47 0.47"></mesh>
+      </geometry>
+    </visual>
+  </link>
+</robot>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg default="civic" description="vehicle model name" name="vehicle_model"></arg>
+  <!-- vehicle description -->
+  <group>
+    <arg default="$(find-pkg-share vehicle_sim)/urdf/vehicle.xacro" description="path to the file of model settings (*.xacro)" name="model_file"></arg>
+    <node exec="robot_state_publisher" name="robot_state_publisher" pkg="robot_state_publisher">
+      <param name="robot_description" value="$(command 'xacro $(var model_file) vehicle_model:=$(var vehicle_model)')"></param>
+    </node>
+  </group>
+</launch>

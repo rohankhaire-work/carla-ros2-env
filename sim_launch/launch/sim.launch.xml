@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <!-- Global arguemnts -->
+  <arg default="true" description="use_sim_time" name="use_sim_time"></arg>
+  <arg default="civic" description="vehicle model name" name="vehicle_model"></arg>
+  <!-- carla ros bridge arguments -->
+  <arg default="localhost" description="Hostname of carla server" name="host"></arg>
+  <arg default="2000" description="TCP port of the CARLA server" name="port"></arg>
+  <arg default="0.05" description="Simulation time (delta seconds) between simulation steps" name="fixed_delta_seconds"></arg>
+  <arg default="Town01" description="Name of the town to load" name="town"></arg>
+  <!-- Spawn Vehicle arguments -->
+  <arg default="$(find-pkg-share sim_launch)/config/object_definition/objects.json" description="Loads the vehicle and sensors" name="objects_definition_file"></arg>
+  <!-- Carla ros bridge -->
+  <include file="$(find-pkg-share carla_ros_bridge)/carla_ros_bridge.launch.py">
+    <arg name="town" value="Town02"></arg>
+    <arg name="timeout" value="5.0"></arg>
+  </include>
+  <!-- Spawning vehicle -->
+  <include file="$(find-pkg-share carla_spawn_objects)/carla_example_ego_vehicle.launch.py">
+    <arg name="objects_definition_file" value="$(var objects_definition_file)"></arg>
+  </include>
+  <!-- Ackermann Controller -->
+  <node exec="carla_ackermann_control_node" name="carla_ackermann_controller" pkg="carla_ackermann_control"></node>
+  <!-- RVIZ Vehicle Viz -->
+  <include file="$(find-pkg-share vehicle_sim)/launch/vehicle.launch.xml">
+    <arg name="vehicle_model" value="$(var vehicle_model)"></arg>
+  </include>
+  <!-- RVIZ -->
+  <node args="-d $(find-pkg-share sim_launch)/config/rviz/rviz_config.rviz" exec="rviz2" name="rviz" pkg="rviz2"></node>
+</launch>
