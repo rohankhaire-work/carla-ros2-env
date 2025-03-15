@@ -4,9 +4,9 @@
   <!-- vehicle body -->
   <link name="hero">
     <visual>
-      <origin rpy="0 0 1.571" xyz="0 0 0"></origin>
+      <origin rpy="0 0 1.571" xyz="0.0 0 0.75"></origin>
       <geometry>
-        <mesh filename="package://vehicle_sim/mesh/teslaM3.dae" scale="0.47 0.47 0.47"></mesh>
+        <mesh filename="package://vehicle_sim/mesh/teslaM3.dae" scale="0.35 0.35 0.35"></mesh>
       </geometry>
     </visual>
   </link>

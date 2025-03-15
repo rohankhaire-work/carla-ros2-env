@@ -21,6 +21,10 @@
   </include>
   <!-- Ackermann Controller -->
   <node exec="carla_ackermann_control_node" name="carla_ackermann_controller" pkg="carla_ackermann_control"></node>
+
+  <include file="$(find-pkg-share carla_manual_control)/carla_manual_control.launch.py">
+    <arg name="role_name" value="hero"/>
+  </include>  
   <!-- RVIZ Vehicle Viz -->
   <include file="$(find-pkg-share vehicle_sim)/launch/vehicle.launch.xml">
     <arg name="vehicle_model" value="$(var vehicle_model)"></arg>
