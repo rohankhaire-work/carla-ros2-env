@@ -1,7 +1,0 @@
-# These packages are needed to build the environment
-empy==3.3.4
-catkin_pkg==1.0.0
-lark==1.2.2
-carla==0.9.15
-simple-pid==1.0.1
-
